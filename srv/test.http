@@ -6,6 +6,6 @@ POST http://localhost:4004/parts/recommendTransfer
 Content-Type: application/json
  
 {
-    "materialId": "TM-BRK-001",
-    "plantId": "P001"
+    "materialId": "TM-ENG-002",
+    "plantId": "P002"
 }

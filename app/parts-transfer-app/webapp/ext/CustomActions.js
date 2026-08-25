@@ -85,6 +85,13 @@ oOperation.execute()
         console.log("Transfer recommendation:", oResult);
  
         oDialog.close();
+
+        if(oResult.recommendedTransferQty === 0){
+            MessageBox.information(
+                oResult.message 
+            );
+            return;
+        }
  
         MessageBox.success(
             "Transfer recommendation received.\n\n" +
