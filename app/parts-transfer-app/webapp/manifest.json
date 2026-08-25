@@ -1,0 +1,155 @@
+{
+  "_version": "1.86.0",
+  "sap.app": {
+    "id": "com.tatamotors.parts.partstransferapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.31.0",
+      "toolsId": "66c168fa-af6b-422c-b2cc-133ed074a0a0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/parts/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.151.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.tatamotors.parts.partstransferapp.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "MaterialsList",
+          "target": "MaterialsList"
+        },
+        {
+          "pattern": "Materials({key}):?query:",
+          "name": "MaterialsObjectPage",
+          "target": "MaterialsObjectPage"
+        }
+      ],
+      "targets": {
+        "MaterialsList": {
+          "type": "Component",
+          "id": "MaterialsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Materials",
+              "variantManagement": "Page",
+              "navigation": {
+                "Materials": {
+                  "detail": {
+                    "route": "MaterialsObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  },
+                  "actions": {
+            "RecommendTransfer": {
+                "id": "recommendTransferButton",
+                "text": "Recommend Transfer",
+                "press": "com.tatamotors.parts.partstransferapp.ext.CustomActions.onRecommendTransfer"
+              
+              }
+        }
+                }
+              }
+            }
+          }
+        },
+        "MaterialsObjectPage": {
+          "type": "Component",
+          "id": "MaterialsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Materials"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}
