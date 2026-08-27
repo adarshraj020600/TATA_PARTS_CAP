@@ -37,6 +37,12 @@ annotate service.Materials with @(
             Label : 'General Information',
             Target : '@UI.FieldGroup#GeneratedGroup',
         },
+        {
+        $Type : 'UI.ReferenceFacet',
+        ID : 'PlantStockFacet',
+        Label : 'Plant Stock Availability',
+        Target : 'stocks/@UI.LineItem',
+    },
     ],
     UI.LineItem : [
         {
@@ -66,4 +72,41 @@ annotate service.Materials with @(
         },
     ],
 );
+annotate service.Stocks with @(
+    UI.LineItem : [
+        {
+            $Type : 'UI.DataField',
+            Label : 'Plant',
+            Value : plant.plantId,
+        },
+        {
+            $Type : 'UI.DataField',
+            Label : 'Plant Name',
+            Value : plant.plantName,
+        },
+        {
+            $Type : 'UI.DataField',
+            Label : 'Location',
+            Value : plant.location,
+        },
+        {
+            $Type : 'UI.DataField',
+            Label : 'Available Qty',
+            Value : availableQty,
+        },
+        {
+            $Type : 'UI.DataField',
+            Label : 'Safety Stock',
+            Value : safetyStock,
+        },
+        {
+            $Type : 'UI.DataField',
+            Label : 'Status',
+            Value : stockStatus,
+            Criticality : stockCriticality,
+            ![@UI.Importance] : #High,
+        },
+    ],
+);
+ 
 

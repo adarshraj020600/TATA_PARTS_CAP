@@ -3,7 +3,12 @@ using { tata.parts as db } from '../db/schema';
 
 service PartsAvailabilityService {
 
-    entity Materials as projection on db.Materials;
+    // entity Materials as projection on db.Materials;
+    entity Materials as projection on db.Materials {
+    *,
+    stocks : Association to many Stocks
+        on stocks.material.ID = $self.ID
+};
     entity Plants as projection on db.Plants;
 
     @readonly
@@ -17,9 +22,18 @@ service PartsAvailabilityService {
         case 
             when unrestrictedQty - reservedQty <
             material.safetyStock
-            then 'SORTAGE'
+            then 'SOHRTAGE'
             else 'OK'
-            end as String(20) ) as stockStatus
+            end as String(20) ) as stockStatus,
+
+        cast(                          //Added for indicator of shortage and ok
+            case
+             when unrestrictedQty - reservedQty <
+            material.safetyStock
+            then 1
+            else 3
+            end as Integer
+        ) as stockCriticality
     };
 
     action recommendTransfer(

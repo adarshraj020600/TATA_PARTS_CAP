@@ -1,4 +1,3 @@
-
 sap.ui.define([
     "sap/m/MessageBox",
     "sap/m/Input",
@@ -21,8 +20,6 @@ sap.ui.define([
         );
         return;
     }
- 
-    
  
     const oInput = new Input({
         placeholder: "Example: P001"
@@ -94,10 +91,12 @@ oOperation.execute()
         }
  
         MessageBox.success(
-            "Transfer recommendation received.\n\n" +
+            "Transfer recommendation\n\n" +
+            "Material: "+oMaterial.materialId +"\n"+
             "From: " + oResult.sourcePlant + "\n" +
             "To: " + oResult.destinationPlant + "\n" +
-            "Quantity: " + oResult.recommendedTransferQty
+            "Recommended Quantity: " + oResult.recommendedTransferQty +"units\n\n"+
+            "Transfer Recommended Successfully."
         );
     })
     .catch(function (oError) {
