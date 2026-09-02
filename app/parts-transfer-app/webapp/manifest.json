@@ -103,7 +103,8 @@
           "options": {
             "settings": {
               "contextPath": "/Materials",
-              "variantManagement": "Page",
+              "variantManagement": "None",
+              "initialLoad" :"Enabled",
               "navigation": {
                 "Materials": {
                   "detail": {

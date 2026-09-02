@@ -5,27 +5,27 @@ annotate service.Materials with @(
         Data : [
             {
                 $Type : 'UI.DataField',
-                Label : 'materialId',
+                Label : 'Material ID',
                 Value : materialId,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'description',
+                Label : 'Description',
                 Value : description,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'materialType',
+                Label : 'Material Type',
                 Value : materialType,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'unit',
+                Label : 'Unit',
                 Value : unit,
             },
             {
                 $Type : 'UI.DataField',
-                Label : 'safetyStock',
+                Label : 'Safety Stock',
                 Value : safetyStock,
             },
         ],
@@ -47,27 +47,27 @@ annotate service.Materials with @(
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
-            Label : 'materialId',
+            Label : 'Material ID',
             Value : materialId,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'description',
+            Label : 'Description',
             Value : description,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'materialType',
+            Label : 'Material Type',
             Value : materialType,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'unit',
+            Label : 'Unit',
             Value : unit,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'safetyStock',
+            Label : 'Safety Stock',
             Value : safetyStock,
         },
     ],
